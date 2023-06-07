@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Driver\driver.cpp">
+      <Filter>Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="Overlay.cpp">
+      <Filter>Overlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="kdmapper\intel_driver.cpp">
+      <Filter>kdmapper</Filter>
+    </ClCompile>
+    <ClCompile Include="kdmapper\mapper.cpp">
+      <Filter>kdmapper</Filter>
+    </ClCompile>
+    <ClCompile Include="kdmapper\portable_executable.cpp">
+      <Filter>kdmapper</Filter>
+    </ClCompile>
+    <ClCompile Include="kdmapper\service.cpp">
+      <Filter>kdmapper</Filter>
+    </ClCompile>
+    <ClCompile Include="kdmapper\utils.cpp">
+      <Filter>kdmapper</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx9.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{d060546f-168b-42f7-a863-d0c37089eeb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{200b03a2-511d-4d4a-a616-89640851fb4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui\Draw">
+      <UniqueIdentifier>{2313a5f4-075b-4235-8b9d-5a3e022f058f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Driver">
+      <UniqueIdentifier>{956bc5a2-3e74-48d1-94ee-671fde4b2f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Overlay">
+      <UniqueIdentifier>{e3db2d39-8fd2-4a3a-ab2e-40ac20799677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom">
+      <UniqueIdentifier>{eaad4686-4f05-46dd-912d-072d67cf108b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kdmapper">
+      <UniqueIdentifier>{e90a82b4-4fab-4277-8ecf-f69eba98258a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Of.h" />
+    <ClInclude Include="SDK\BasePlayer.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Math.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.h" />
+    <ClInclude Include="SDK\BaseProjectile.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Misc.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="SDK\Aim.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>ImGui\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Driver\driver.h">
+      <Filter>Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationVector.h">
+      <Filter>Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Driver.hpp">
+      <Filter>Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.h" />
+    <ClInclude Include="Overlay.h">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="pic.h">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="bytes1.h">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverBytes.h" />
+    <ClInclude Include="VMPSDK.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="logo.h">
+      <Filter>Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="color.hpp">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinBot.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\Process.h">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\service.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\utils.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\intel_driver.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\intel_driver_resource.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\mapper.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\nt.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="kdmapper\portable_executable.hpp">
+      <Filter>kdmapper</Filter>
+    </ClInclude>
+    <ClInclude Include="lazy.h">
+      <Filter>Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Comfortaa-Bold.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Comfortaa-Regular.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\FontAwesome.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\IconsFontAwesome.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx9.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\ksk.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\unknownController.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="xorstr.h" />
+    <ClInclude Include="skStr.h" />
+    <ClInclude Include="auth.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Offset Update\dump.cs" />
+  </ItemGroup>
+</Project>
