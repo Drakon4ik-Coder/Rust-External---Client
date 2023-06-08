@@ -410,7 +410,7 @@ void Aim(BasePlayer* player)
 		Vector2 TargetAngles = Math::CalcAngle(LocalPlayer.BasePlayer->GBoneByID2(head), TargetBonePos);
 		Vector2 Angles; Angles.x = TargetAngles.x, Angles.y = TargetAngles.y;
 		if (isnan(Angles.x) || isnan(Angles.y) || AimFov(player, head) > Value::floats::Aim::Fov) return;
-		UINT64 PlayerEyes = safe_read((uintptr_t)LocalPlayer.BasePlayer + 0x690, UINT64);
+		UINT64 PlayerEyes = safe_read((uintptr_t)LocalPlayer.BasePlayer + oPlayerEyes, UINT64);
 		Vector4 QuatAngles = ToQuat({ Angles.x, Angles.y, 0.0f });
 		safe_write(PlayerEyes + 0x44, QuatAngles, Vector4);
 		//LocalPlayer.BasePlayer->SetVA(FinalAngle);

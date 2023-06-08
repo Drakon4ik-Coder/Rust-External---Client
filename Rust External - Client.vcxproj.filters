@@ -204,7 +204,4 @@
     <ClInclude Include="skStr.h" />
     <ClInclude Include="auth.hpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Offset Update\dump.cs" />
-  </ItemGroup>
 </Project>

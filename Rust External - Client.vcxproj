@@ -226,9 +226,6 @@
     <ClInclude Include="VMPSDK.h" />
     <ClInclude Include="xorstr.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Offset Update\dump.cs" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

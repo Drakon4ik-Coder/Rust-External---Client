@@ -94,9 +94,8 @@ public:
 			Driver.Write<int>(newrecoil + oAimCone, 0);
 			Driver.Write<int>(newrecoil + oHipAimCone, 0);
 			Driver.Write<int>(newrecoil + oAimconePenaltyPerShot, 0);
-			
-		}
 
+		}
 	}
 
 
@@ -133,7 +132,6 @@ public:
 		{
 			DWORD64 Held = Driver.Read<DWORD64>((const uintptr_t)this + oHeld);
 			DWORD64 recoil = Driver.Read<DWORD64>(Held + oRecoilProperties);
-
 			Driver.Write(recoil + oRecoilMinYaw, recoilvalYaw);
 			Driver.Write(recoil + oRecoilMaxYaw, recoilvalYaw);
 			Driver.Write(recoil + oRecoilMinPitch, recoilvalPitch);

@@ -1016,13 +1016,14 @@ void entity_esp_thread() {
 				//std::cout << "Not valid";
 				continue;
 			}
+
+			if (/*Value::bools::Aim::IgnoreSleepers && */Player->Flags(16) || Player->Flags(64))
+				continue;
+			if (Value::bools::Aim::ignoreNpc && Player->IsNpcss())
+				continue;
+
 			ESPThread(Player, LocalPlayer.BasePlayer);
 			RadarPlayer(Player);
-
-			//if (Value::bools::Aim::IgnoreSleepers && Player->Flags(16))
-			//	continue;
-			///*if (Value::bools::Aim::ignoreNpc && Player->IsNpcss())
-			//	continue;*/
 
 			if (Player->IsVisible() && (AimFov(Player, head) < Value::floats::Aim::Fov))
 			{
@@ -1108,8 +1109,8 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 			else
 				if (name.find(xorstr_("small_stash_deployed.prefab")) != std::string::npos) {
 					DWORD64 gameObject = safe_read(ObjectClass + 0x30, DWORD64); //Tag 449
-					float burriedOffset = safe_read(gameObject + 0x488, float);
-					std::cout << burriedOffset << std::endl;
+					//float burriedOffset = safe_read(gameObject + 0x488, float);
+					//std::cout << burriedOffset << std::endl;
 					DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 					DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);
 					Vector3 pos = safe_read(Vec + 0x90, Vector3);
@@ -1316,7 +1317,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																						local_workbench2.push_back(pos);
 																					}
 																					else
-																						if (name.find(xorstr_("beartrap"))) {
+																						if (name.find(xorstr_("beartrap.prefab"))) {//beartrap
 																							DWORD64 gameObject = safe_read(ObjectClass + 0x30, DWORD64); //Tag 449
 																							DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 																							DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);

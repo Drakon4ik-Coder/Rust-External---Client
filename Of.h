@@ -160,3 +160,4 @@ DWORD64 meele[]{
 #define groundAngleNew 0xC8 // private float groundAngleNew; class PlayerWalkMovement : BaseMovement
 #define oFlagOnGround 4 // public const ModelState.Flag OnGround =; class PlayerTick : IDisposable,
 #define oDidSparkThisFrame 0x3B0 // private bool _didSparkThisFrame; class FlintStrikeWeapon : BaseProjectile
+#define oPlayerEyes 0x748 // public PlayerEyes eyes; class BasePlayer : BaseCombatEntity,
