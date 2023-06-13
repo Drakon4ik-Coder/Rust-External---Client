@@ -381,15 +381,15 @@ void ImGui::Hotkey(int* k, const ImVec2& size_arg)
     }
 }
 
-void InitStyle()
-{
-    ImGuiIO& io = ImGui::GetIO();
-    if (io.Fonts->AddFontFromFileTTF("C:/Users/Professional/Desktop/Fonts/Inter-Medium.ttf", 10.0f) == NULL)
-    {
-        std::cout << "Font error" << std::endl;
-    }
-    std::cout << "Test" << std::endl;
-}
+//void InitStyle()
+//{
+//    ImGuiIO& io = ImGui::GetIO();
+//    if (io.Fonts->AddFontFromFileTTF("C:/Users/Professional/Desktop/Fonts/Inter-Medium.ttf", 10.0f) == NULL)
+//    {
+//        std::cout << "Font error" << std::endl;
+//    }
+//    std::cout << "Test" << std::endl;
+//}
 
 namespace GUI
 {

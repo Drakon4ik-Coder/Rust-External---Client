@@ -24,7 +24,7 @@
     <ProjectGuid>{1ea6bf6f-c2f1-44aa-b3b7-f3816db34c3a}</ProjectGuid>
     <RootNamespace>RustExternalClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Fix</ProjectName>
+    <ProjectName>Blood Hack</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

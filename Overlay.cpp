@@ -266,8 +266,8 @@ bool Overlay::Create(const std::wstring& target_class_name)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 	(void)io;
-	ImFont* m_pFont = io.Fonts->AddFontFromFileTTF(("C:\\Windows\\Fonts\\ariblk.ttf"), 16, nullptr, io.Fonts->GetGlyphRangesCyrillic());
-
+	ImFont* m_pFont = io.Fonts->AddFontFromFileTTF(("C:\\Windows\\Fonts\\arial.ttf"), 16, nullptr, io.Fonts->GetGlyphRangesCyrillic());
+	printf("%i",m_pFont);
 	ImGui::StyleColorsDark();
 
 	if (!ImGui_ImplWin32_Init(m_window_overlay))

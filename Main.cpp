@@ -1696,7 +1696,7 @@ BOOL __fastcall WINAPI Main(HMODULE hmodule) {
 		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT, 0, 0, 0);
 		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT1, 0, 0, 0);
 		pOverlay->SetRenderProcedure(&RenderProcedure);
-		InitStyle();
+		//InitStyle();
 		while (pOverlay->Render() && !exitBool)
 		{
 			Sleep(1);
