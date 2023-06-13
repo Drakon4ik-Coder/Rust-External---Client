@@ -381,6 +381,16 @@ void ImGui::Hotkey(int* k, const ImVec2& size_arg)
     }
 }
 
+void InitStyle()
+{
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.Fonts->AddFontFromFileTTF("C:/Users/Professional/Desktop/Fonts/Inter-Medium.ttf", 10.0f) == NULL)
+    {
+        std::cout << "Font error" << std::endl;
+    }
+    std::cout << "Test" << std::endl;
+}
+
 namespace GUI
 {
     DWORD window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollWithMouse;
@@ -389,7 +399,7 @@ namespace GUI
 		if (!pOverlay->m_bGuiVisible)
 			return;
 
-        ImGuiStyle& style = ImGui::GetStyle();
+        //ImGuiStyle& style = ImGui::GetStyle();
 
 		
 
@@ -497,7 +507,7 @@ namespace GUI
                 ImGui::SetCursorPos(ImVec2(30, 520));
                 if (Value::EU) {
                     if (ImGui::Button(xorstr_("\tExit"), ImVec2(120, 30))) {
-                        exit(1);
+                        exitBool = true;
                     };
                 }
               
@@ -524,7 +534,7 @@ namespace GUI
                         ImGui::PopStyleVar(1);
                         ImGui::Checkbox(xorstr_("Smooth"), &Value::bools::Aim::Smooth);
                         ImGui::Checkbox(xorstr_("Range"), &Value::bools::Aim::range);
-                        ImGui::Checkbox(xorstr_("Ignore Sleepers"), &Value::bools::Aim::IgnoreSleepers);
+                        //ImGui::Checkbox(xorstr_("Ignore Sleepers"), &Value::bools::Aim::IgnoreSleepers);
                         ImGui::Checkbox(xorstr_("Ignore Npc"), &Value::bools::Aim::ignoreNpc);
                         ImGui::Checkbox(xorstr_("Visible Check"), &Value::bools::Aim::VisibleCheck);
                     }
@@ -610,7 +620,7 @@ namespace GUI
 
                 ImGui::SetCursorPos(ImVec2(535, 95 + animation_tab / 8));
 
-                ImGui::BeginChild(xorstr_("Radar"), ImVec2(290, 270), true, ImGuiWindowFlags_NoScrollWithMouse);
+                ImGui::BeginChild(xorstr_("Radar"), ImVec2(290, 480), true, ImGuiWindowFlags_NoScrollWithMouse);
                 {
                     ImGui::SetCursorPos(ImVec2(20, 60));
                     ImGui::BeginGroup(); {
@@ -642,7 +652,7 @@ namespace GUI
 
                 ImGui::SetCursorPos(ImVec2(535, 385 + animation_tab / 8));
 
-                ImGui::BeginChild(xorstr_("Settings Visual"), ImVec2(290, 190), true, ImGuiWindowFlags_NoScrollWithMouse);
+                ImGui::BeginChild(xorstr_("Settings Visual"), ImVec2(290, 480), true, ImGuiWindowFlags_NoScrollWithMouse);
                 {
                     ImGui::SetCursorPos(ImVec2(20, 60));
                     ImGui::BeginGroup(); {
@@ -686,7 +696,7 @@ namespace GUI
                     }
                     ImGui::Checkbox(xorstr_("Spider"), &Value::bools::Player::PlayerWalk::Spiderman);
                     ImGui::Checkbox(xorstr_("InfinityJump"), &Value::bools::Player::PlayerWalk::InfinityJump);
-                    ImGui::Checkbox(xorstr_("PatchDebug"), &Value::bools::Misc::PatchDebug);
+                    //ImGui::Checkbox(xorstr_("PatchDebug"), &Value::bools::Misc::PatchDebug);
                     ImGui::Checkbox(xorstr_("WalkOnWater"), &Value::bools::Misc::WalkOnWater);
                     if (Value::bools::Misc::WalkOnWater) {
                         Value::bools::Player::PlayerWalk::ChangeGravity = false;
@@ -694,9 +704,9 @@ namespace GUI
                     }
                     ImGui::Checkbox(xorstr_("DebugCamera"), &Value::bools::Player::PlayerWalk::DebugCamera);
                     ImGui::Checkbox(xorstr_("AntiKastryla"), &Value::bools::Misc::Kastryla);
-                    ImGui::Checkbox(xorstr_("FakeAdmin"), &Value::bools::Player::PlayerWalk::FakeAdmin);
-                    ImGui::Checkbox(xorstr_("FastSwitch"), &Value::bools::Misc::fastSwitch);
-                    ImGui::Checkbox(xorstr_("MapHardcor"), &Value::bools::Player::MapHard);
+                    //ImGui::Checkbox(xorstr_("FakeAdmin"), &Value::bools::Player::PlayerWalk::FakeAdmin);
+                    //ImGui::Checkbox(xorstr_("FastSwitch"), &Value::bools::Misc::fastSwitch);
+                    //ImGui::Checkbox(xorstr_("MapHardcor"), &Value::bools::Player::MapHard);
 
 
 
@@ -797,9 +807,9 @@ namespace GUI
                         ImGui::Checkbox(xorstr_("Sulfure"), &Value::bools::Visuals::World::Items::Ore::Sulfur); ImGui::SameLine(150); ImGui::ColorEdit3("Sulfur", (float*)&Value::Colors::Visuals::World::Ore::Sulfur, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Iron"), &Value::bools::Visuals::World::Items::Ore::Iron); ImGui::SameLine(150); ImGui::ColorEdit3("Iron", (float*)&Value::Colors::Visuals::World::Ore::Iron, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Mini Copter"), &Value::bools::Visuals::World::Items::Minicopter); ImGui::SameLine(150); ImGui::ColorEdit3("Minicopter", (float*)&Value::Colors::Visuals::World::Minicopter, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Patrol"), &Value::bools::Visuals::World::Items::Patrol); ImGui::SameLine(150); ImGui::ColorEdit3("Patrol", (float*)&Value::Colors::Visuals::World::Patrol, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Patrol"), &Value::bools::Visuals::World::Items::Patrol); ImGui::SameLine(150); ImGui::ColorEdit3("Patrol", (float*)&Value::Colors::Visuals::World::Patrol, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         //ImGui::Checkbox(xorstr_("CH47"), &Value::bools::Visuals::World::Items::CH47); ImGui::SameLine(150); ImGui::ColorEdit3("CH47", (float*)&Value::Colors::Visuals::World::CH47, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("ScrapHeli"), &Value::bools::Visuals::World::Items::scrapheli); ImGui::SameLine(150); ImGui::ColorEdit3("ScrapHeli", (float*)&Value::Colors::Visuals::World::scrapheli, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("ScrapHeli"), &Value::bools::Visuals::World::Items::scrapheli); ImGui::SameLine(150); ImGui::ColorEdit3("ScrapHeli", (float*)&Value::Colors::Visuals::World::scrapheli, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Horse"), &Value::bools::Visuals::World::Items::horse); ImGui::SameLine(150); ImGui::ColorEdit3("Horse", (float*)&Value::Colors::Visuals::World::horse, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Bear"), &Value::bools::Visuals::World::Items::Bear); ImGui::SameLine(150); ImGui::ColorEdit3("Bear", (float*)&Value::Colors::Visuals::World::Bear, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Boar"), &Value::bools::Visuals::World::Items::Boar); ImGui::SameLine(150); ImGui::ColorEdit3("Boar", (float*)&Value::Colors::Visuals::World::Boar, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
@@ -825,19 +835,19 @@ namespace GUI
                     ImGui::SetCursorPos(ImVec2(20, 60));
                     ImGui::BeginGroup(); {
                         ImGui::Checkbox(xorstr_("Cupboard"), &Value::bools::Visuals::World::Items::Cupboard); ImGui::SameLine(150); ImGui::ColorEdit3("Cupboard", (float*)&Value::Colors::Visuals::World::Cupboard, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Bear Trap"), &Value::bools::Visuals::World::Items::BearTrap); ImGui::SameLine(150); ImGui::ColorEdit3("Bear Trap", (float*)&Value::Colors::Visuals::World::BearTrap, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Auto Turret"), &Value::bools::Visuals::World::Items::autoturret); ImGui::SameLine(150); ImGui::ColorEdit3("Auto Turret", (float*)&Value::Colors::Visuals::World::autoturret, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Guntrap"), &Value::bools::Visuals::World::Items::guntrap); ImGui::SameLine(150); ImGui::ColorEdit3("Guntrap", (float*)&Value::Colors::Visuals::World::guntrap, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Bear Trap"), &Value::bools::Visuals::World::Items::BearTrap); ImGui::SameLine(150); ImGui::ColorEdit3("Bear Trap", (float*)&Value::Colors::Visuals::World::BearTrap, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Auto Turret"), &Value::bools::Visuals::World::Items::autoturret); ImGui::SameLine(150); ImGui::ColorEdit3("Auto Turret", (float*)&Value::Colors::Visuals::World::autoturret, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Guntrap"), &Value::bools::Visuals::World::Items::guntrap); ImGui::SameLine(150); ImGui::ColorEdit3("Guntrap", (float*)&Value::Colors::Visuals::World::guntrap, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Crate Basic"), &Value::bools::Visuals::World::Items::crate_basic); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Basic", (float*)&Value::Colors::Visuals::World::crate_basic, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Crate Military"), &Value::bools::Visuals::World::Items::crate_normal); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Military", (float*)&Value::Colors::Visuals::World::crate_normal, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Crate Tools"), &Value::bools::Visuals::World::Items::CrateTools); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Tools", (float*)&Value::Colors::Visuals::World::CrateTools, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Crate Tools"), &Value::bools::Visuals::World::Items::CrateTools); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Tools", (float*)&Value::Colors::Visuals::World::CrateTools, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Crate Normal"), &Value::bools::Visuals::World::Items::crate_normal2); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Normal", (float*)&Value::Colors::Visuals::World::crate_normal2, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Crate Bradley"), &Value::bools::Visuals::World::Items::bradley_crate); ImGui::SameLine(150); ImGui::ColorEdit3("Bradley Crate", (float*)&Value::Colors::Visuals::World::bradley_crate, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Crate Elite"), &Value::bools::Visuals::World::Items::crate_elite); ImGui::SameLine(150); ImGui::ColorEdit3("Crate Elite", (float*)&Value::Colors::Visuals::World::crate_elite, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Workbench 1"), &Value::bools::Visuals::World::Items::Workbench1); ImGui::SameLine(150); ImGui::ColorEdit3("Wb1 Color", (float*)&Value::Colors::Visuals::World::Workbench1, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Workbench 2"), &Value::bools::Visuals::World::Items::Workbench2); ImGui::SameLine(150); ImGui::ColorEdit3("Wb2 Color", (float*)&Value::Colors::Visuals::World::Workbench2, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                         ImGui::Checkbox(xorstr_("Workbench 3"), &Value::bools::Visuals::World::Items::Workbench3); ImGui::SameLine(150); ImGui::ColorEdit3("Wb3 Color", (float*)&Value::Colors::Visuals::World::Workbench3, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
-                        ImGui::Checkbox(xorstr_("Advend Calendar"), &Value::bools::Visuals::World::Items::Winter); ImGui::SameLine(150); ImGui::ColorEdit3("Winter", (float*)&Value::Colors::Visuals::World::crate_winter, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
+                        //ImGui::Checkbox(xorstr_("Advend Calendar"), &Value::bools::Visuals::World::Items::Winter); ImGui::SameLine(150); ImGui::ColorEdit3("Winter", (float*)&Value::Colors::Visuals::World::crate_winter, ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_PickerHueWheel); ImGui::Spacing();
                     }
                 }
                 ImGui::EndChild();
@@ -882,7 +892,7 @@ namespace GUI
                             ImGui::PopItemWidth();
                             ImGui::Spacing();
                         }
-                        ImGui::Checkbox(xorstr_("Longhand"), &Value::bools::Player::Longhand);
+                        //ImGui::Checkbox(xorstr_("Longhand"), &Value::bools::Player::Longhand);
                     }
 
                     break;

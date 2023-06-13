@@ -385,6 +385,7 @@ bool cunter = false;
 //}
 void InitPlayer()
 {
+	long long i = 0;
 	const auto main_camera = safe_read(game_assembly + oMainCamera, UINT64);
 	LocalPlayer.pViewMatrix = (Matrix4x4*)(ReadChain<UINT64>(main_camera, { 0xB8 , 0x0 , 0x10 }) + 0x2E4);
 	Matrix4x4* pViewMatrix = LocalPlayer.pViewMatrix;
@@ -1083,7 +1084,7 @@ std::vector<Vector3> local_bear;
 std::vector<Vector3> local_boar;
 
 DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
-	while (true) {
+	while (true && !exitBool) {
 
 		auto vals = Driver.Read<uintptr_t>(Driver.Read<uintptr_t>(game_assembly + BaseGameMode) + 0xB8); //System_Collections_Generic_List_BaseGameMode__c
 		auto entity_realm_client = Driver.Read<uintptr_t>(vals + 0x10);
@@ -1335,12 +1336,12 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																								local_CrateTools.push_back(pos);
 																							}
 																							else
-																								if (name.find(xorstr_("assets/prefabs/npc/autoturret/autoturret_deployed.prefab")) != std::string::npos) {
+																								if (name.find(xorstr_("autoturret_deployed.prefab")) != std::string::npos) {
 																									DWORD64 gameObject = safe_read(ObjectClass + 0x30, DWORD64); //Tag 449
 																									DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 																									DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);
 																									Vector3 pos = safe_read(Vec + 0x90, Vector3);
-
+																									//std::cout << "Autoturret found" << std::endl;
 																									local_autoturret.push_back(pos);
 																								}
 																								else
@@ -1349,7 +1350,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																										DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 																										DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);
 																										Vector3 pos = safe_read(Vec + 0x90, Vector3);
-
+																										//std::cout << "Scrapheli found" << std::endl;
 																										local_fuel_storage_scrapheli.push_back(pos);
 																									}
 																									else
@@ -1367,7 +1368,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																														DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 																														DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);
 																														Vector3 pos = safe_read(Vec + 0x90, Vector3);
-
+																														//std::cout << "Scrapheli found" << std::endl;
 																														local_patrol_heli.push_back(pos);
 																													}
 																													else
@@ -1376,7 +1377,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																															DWORD64 Trans = safe_read(gameObject + 0x8, DWORD64);
 																															DWORD64 Vec = safe_read(Trans + 0x38, DWORD64);
 																															Vector3 pos = safe_read(Vec + 0x90, Vector3);
-
+																															//std::cout << "Guntrap found" << std::endl;
 																															local_guntrap.push_back(pos);
 																														}
 																														else
@@ -1395,6 +1396,10 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 																																				Vector3 pos = safe_read(Vec + 0x90, Vector3);
 																																				local_winter.push_back(pos);
 																																			}
+																																				/*else 
+																																				{
+																																					std::cout << name << std::endl;
+																																				}*/
 
 																																				
 
@@ -1437,6 +1442,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 		boar = std::move(local_boar);
 		Diesel = std::move(local_Diesel);
 	}
+	return 1;
 }
 
 
@@ -1445,7 +1451,7 @@ DWORD __fastcall WINAPI EntityT1(LPVOID lpParameter) {
 bool recover = false;
 
 DWORD __fastcall WINAPI EntityT(LPVOID lpParameter) {
-	while (true) {
+	while (true && !exitBool) {
 
 		auto val = Driver.Read<uintptr_t>(Driver.Read<uintptr_t>(game_assembly + BaseGameMode) + 0xB8); //System_Collections_Generic_List_BaseGameMode__c
 		auto entity_realm_client1 = Driver.Read<uintptr_t>(val + 0x10);
@@ -1498,6 +1504,7 @@ DWORD __fastcall WINAPI EntityT(LPVOID lpParameter) {
 
 
 	}
+	return 1;
 }
 
 #include <TlHelp32.h>
@@ -1575,19 +1582,20 @@ void EraseByte(unsigned char Bytes[])
 
 }
 
-std::string name = "Chernobyl"; // application name. right above the blurred text aka the secret on the licenses tab among other tabs
-std::string ownerid = "NPUT3trtKt"; // ownerid, found in account settings. click your profile picture on top right of dashboard and then account settings.
-std::string secret = "e131da7f505740dd51ed1c20f0aaa1b52dc4e2e9e2cb74818c64a0459ceda93f"; // app secret, the blurred text on licenses tab and other tabs
-std::string version = "3.1"; // leave alone unless you've changed version on website
+//std::string name = "Chernobyl"; // application name. right above the blurred text aka the secret on the licenses tab among other tabs
+//std::string ownerid = "NPUT3trtKt"; // ownerid, found in account settings. click your profile picture on top right of dashboard and then account settings.
+//std::string secret = "e131da7f505740dd51ed1c20f0aaa1b52dc4e2e9e2cb74818c64a0459ceda93f"; // app secret, the blurred text on licenses tab and other tabs
+//std::string version = "3.1"; // leave alone unless you've changed version on website
+std::string name = "Blood Hack"; // application name. right above the blurred text aka the secret on the licenses tab among other tabs
+std::string ownerid = "qOL7k4rf6x"; // ownerid, found in account settings. click your profile picture on top right of dashboard and then account settings.
+std::string secret = "c099d29da1983fb4424626bc6244ce7ca1fe5d0d0a6f46a00568f511d599d2e7"; // app secret, the blurred text on licenses tab and other tabs
+std::string version = "3.0"; // leave alone unless you've changed version on website
 std::string url = "https://keyauth.win/api/1.2/";
 
 KeyAuth::api KeyAuthApp(name, ownerid, secret, version, url);
 
 
 BOOL __fastcall WINAPI Main(HMODULE hmodule) {
-
-	SetConsoleTitle(xorstr_("BloodyHack"));
-
 
 	auto module = LoadLibraryW(xorstr_(L"ntdll.dll"));
 	if (!module)
@@ -1600,83 +1608,98 @@ BOOL __fastcall WINAPI Main(HMODULE hmodule) {
 	{
 		return FALSE;
 	}
-	if (CreateConsole == false)
+	/*if (CreateConsole == false)
 	{
 		ShowWindow(::GetConsoleWindow(), SW_HIDE);
 	}
 	else
 	{
 		ShowWindow(::GetConsoleWindow(), SW_SHOW);
-
-	}
+	}*/
 	try {
-		if (skid == true)
+		/*if (skid == true)
+		{*/
+		for(int i = 0; i<3; i++)
 		{
 			if (!Driver.IsDriverLoaded())
 			{
+				std::cout << std::format("Driver load: {} attempts left....", 3-i+1) << std::endl;
 				system(xorstr_("sc stop faceit"));
 				system(xorstr_("sc stop vgk"));
 				system(xorstr_("cls"));
-				std::cout << xorstr_("[ + ] Driver loaded....") << std::endl;
+				std::cout << xorstr_("[ + ] Driver loading....") << std::endl;
 				Sleep(1000);
 				HANDLE iqvw64e_device_handle = intel_driver::Load();
 				if (!iqvw64e_device_handle || iqvw64e_device_handle == INVALID_HANDLE_VALUE)
 				{
 					std::cout << xorstr_("[ - ] Failed to load driver disable Secure Boot or Reinstall Windows ") << std::endl;
-					return -1;
+					Sleep(5000);
+					system(xorstr_("cls"));
+					continue;
 				}
 				EraseByte(klop);
 				if (!mapper::Driver(iqvw64e_device_handle, klop, sizeof(klop)))
 				{
 					std::cout << xorstr_("[ - ] Failed to map driver") << std::endl;
-					return -1;
+					intel_driver::Unload(iqvw64e_device_handle);
+					Sleep(5000);
+					system(xorstr_("cls"));
+					continue;
 				}
 				intel_driver::Unload(iqvw64e_device_handle);
-				std::cout << xorstr_("[ + ] Restart loader....") << std::endl;
-				return -1;
+				std::cout << xorstr_("[ + ] Driver loaded....") << std::endl;
+				Sleep(10000);
+				break;
 			}
-			if (Driver.IsDriverLoaded())
+			else
 			{
-				std::cout << xorstr_("[ + ] Succes") << std::endl;
+				break;
+			}
+		}
+		if (!Driver.IsDriverLoaded())
+		{
+			std::cout << xorstr_("[ - ] Driver is not loaded. Restart the program....") << std::endl;
+			return -1;
+		}
+		std::cout << xorstr_("[ + ] Success") << std::endl;
+		Sleep(1000);
+		while (true)
+		{
+			if (FindWindow(xorstr_("UnityWndClass"), 0))
+			{
 				Sleep(1000);
-				while (true)
-				{
-					if (FindWindow(xorstr_("UnityWndClass"), 0))
-					{
-						Sleep(1000);
-						std::cout << xorstr_("Rust Found") << endl;
-						pId = GetProcessIdByName(xorstr_("RustClient.exe"));
-						Driver.SetPID(pId);
-						game_assembly = Driver.GetModInfo(xorstr_("GameAssembly.dll")).ModBase;
-						unity_player = Driver.GetModInfo(xorstr_("UnityPlayer.dll")).ModBase;
-
-						//info
-						std::cout << "BloodyHack version: 3.0" << std::endl;
-						std::cout << "Username: " << KeyAuthApp.data.username;
-						break;
-					}
-					else {
-						std::cout << xorstr_("Wait Rust..") << endl;
-						Sleep(100);
-						system("cls");
-					}
-					Sleep(1);
-				}
+				std::cout << xorstr_("Rust Found") << endl;
+				pId = GetProcessIdByName(xorstr_("RustClient.exe"));
+				Driver.SetPID(pId);
+				game_assembly = Driver.GetModInfo(xorstr_("GameAssembly.dll")).ModBase;
+				unity_player = Driver.GetModInfo(xorstr_("UnityPlayer.dll")).ModBase;
+				Sleep(3000);
+				//info
+				/*std::cout << "BloodyHack version: 3.0" << std::endl;
+				std::cout << "Username: " << KeyAuthApp.data.username;*/
+				break;
 			}
-			MessageBoxA(0, "BloodyHack loaded", "[BloodyHack]", MB_OK);
-			pOverlay = std::make_shared<Overlay>(xorstr_(L"UnityWndClass"));
-			pOverlay->SetRenderProcedure(&RenderProcedure);
-			InitPlayer();
-			Value::floats::Screen::W = GetSystemMetrics(SM_CXSCREEN);
-			Value::floats::Screen::H = GetSystemMetrics(SM_CYSCREEN);
-			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT, 0, 0, 0);
-			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT1, 0, 0, 0);
-			pOverlay->SetRenderProcedure(&RenderProcedure);
-			//::ShowWindow(::GetConsoleWindow(), SW_HIDE);
-			while (pOverlay->Render())
-			{
-				Sleep(1);
+			else {
+				std::cout << xorstr_("Wait Rust..") << endl;
+				Sleep(100);
+				system(xorstr_("cls"));
 			}
+			Sleep(1);
+		}
+		//::ShowWindow(::GetConsoleWindow(), SW_HIDE);
+		MessageBoxA(0, xorstr_("BloodyHack loaded"), xorstr_("[BloodyHack]"), MB_OK | MB_APPLMODAL);
+		pOverlay = std::make_shared<Overlay>(xorstr_(L"UnityWndClass"));
+		pOverlay->SetRenderProcedure(&RenderProcedure);
+		InitPlayer();
+		Value::floats::Screen::W = GetSystemMetrics(SM_CXSCREEN);
+		Value::floats::Screen::H = GetSystemMetrics(SM_CYSCREEN);
+		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT, 0, 0, 0);
+		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)EntityT1, 0, 0, 0);
+		pOverlay->SetRenderProcedure(&RenderProcedure);
+		InitStyle();
+		while (pOverlay->Render() && !exitBool)
+		{
+			Sleep(1);
 		}
 	}
 	catch (const std::exception& ex)
@@ -1685,6 +1708,19 @@ BOOL __fastcall WINAPI Main(HMODULE hmodule) {
 	}
 	return 1;
 
+}
+std::string key;
+BOOL __fastcall WINAPI CheckLogin(HMODULE hmodule) {
+	while (KeyAuthApp.data.success && !exitBool)
+	{
+		KeyAuthApp.data.channeldata.clear();
+		KeyAuthApp.data.subscriptions.clear();
+		KeyAuthApp.data.~data_class();
+		KeyAuthApp.license(key);
+		Sleep(1000);
+	}
+	exitBool = true;
+	return 1;
 }
 
 std::string comp_name() {
@@ -1696,11 +1732,48 @@ std::string comp_name() {
 
 int __fastcall main()
 {
-	system("color a");
+	SetConsoleTitle(xorstr_("BloodyHack"));
+	printf(xorstr_("[Welcome to Blood Hack]\n"));
+	KeyAuthApp.init();
+	bool exit = true;
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << xorstr_("Enter key: ");
+		std::cin >> key;
 
+		KeyAuthApp.license(key);
+		if (KeyAuthApp.data.success != true) {
+			MessageBoxA(0, "Login error, please check you key" , xorstr_("[Blood Hack]"), MB_OK || MB_ICONERROR);
+		}
+		else
+		{
+			std::cout << xorstr_("[+] Key is valid") << std::endl;
+			exit = false;
+			break;
+		}
+	}
+	if (exit)
+	{
+		std::cout << "[ - ] You entered incorrect key 10 times. Restart the program" << std::endl;
+		getchar();
+		return -1;
+	}
+	std::cout << KeyAuthApp.data.message <<std::endl;
 
-
-	printf("Welcome to Chernobyl\n");
+	for (auto var : KeyAuthApp.data.subscriptions)
+	{
+		std::cout << "Name: " << var.name << " Expire date: " << stoi(var.expiry) << std::endl;
+		//std::cout << time << std::endl;
+		std::cout << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) << std::endl;
+	}
+	KeyAuthApp.log("Key: " + key + ";PC_NAME: " + comp_name() + ";IP: " + KeyAuthApp.data.ip + ";HWID: " + KeyAuthApp.data.hwid);
+	Sleep(1000);
+	//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Main, 0, 0, 0);
+	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)CheckLogin, 0, 0, 0);
+	while (!exitBool)
+	{
+		Sleep(100);
+	}
 	//printf("Login to account\n");
 
 	//std::string username;
@@ -1725,16 +1798,16 @@ int __fastcall main()
 	//KeyAuthApp.log("USERNAME: " + KeyAuthApp.data.username + ";PASSWD: " + passwd + ";PC_NAME: " + comp_name() + ";IP: " + KeyAuthApp.data.ip + ";HWID: " + KeyAuthApp.data.hwid);
 
 
-	//if (lis(FindWindowA)(xorstr_(" "), 0))
-	{
-		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Main, 0, 0, 0);
-		getchar();
-		getchar();
-	}
-	//else
-	{
-		return 0;
-	}
+	////if (lis(FindWindowA)(xorstr_(" "), 0))
+	//{
+	//	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Main, 0, 0, 0);
+	//	getchar();
+	//	getchar();
+	//}
+	////else
+	//{
+	//	return 0;
+	//}
 }
 
 

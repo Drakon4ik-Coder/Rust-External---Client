@@ -8106,7 +8106,7 @@ bool ImGui::KeyBind(const char* label, int& k, const ImVec2& size_arg)
 				ImGui::ClearActiveID();
 			}
 		}
-		std::cout << "Test" << std::endl;
+		//std::cout << "Test" << std::endl;
 		if (!value_changed) {
 			for (auto i = 0; i <= 511; i++) {
 				if (io.KeysDown[i]) {

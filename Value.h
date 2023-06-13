@@ -20,6 +20,7 @@ float TimeFloat = 12;
 float gravityFly = 0;
 float light = 1;
 bool WaterMark = true;
+bool exitBool = false;
 namespace Value {
     float posx = 1670;
     float posy = 0;

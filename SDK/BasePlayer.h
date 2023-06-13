@@ -343,7 +343,7 @@ public:
 	void __fastcall NoBlockAiming()
 	{
 		safe_write((const uintptr_t)this + oClothingBlocksAiming, false, bool);
-		safe_write((const uintptr_t)this + 0x764, false, bool);
+		safe_write((const uintptr_t)this + 0x820, false, bool);
 	}
 
 
@@ -495,12 +495,12 @@ public:
 
 	void __fastcall MinicopterShooting() {
 		if (Value::bools::Player::PlayerWalk::MinicopterFire) {
-			UINT64 Mounted = Driver.Read<UINT64>((const uintptr_t)this + 0x648);
-			Driver.Write<bool>(Mounted + 0x2B8, true);
+			UINT64 Mounted = Driver.Read<UINT64>((const uintptr_t)this + 0x6A0);
+			Driver.Write<bool>(Mounted + 0x2D8, true);
 		}
 		else {
-			UINT64 Mounted = Driver.Read<UINT64>((const uintptr_t)this + 0x648);
-			Driver.Write<bool>(Mounted + 0x2B8, false);
+			UINT64 Mounted = Driver.Read<UINT64>((const uintptr_t)this + 0x6A0);
+			Driver.Write<bool>(Mounted + 0x2D8, false);
 		}
 
 	}
