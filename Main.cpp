@@ -1592,7 +1592,7 @@ std::string secret = "c099d29da1983fb4424626bc6244ce7ca1fe5d0d0a6f46a00568f511d5
 std::string version = "3.0"; // leave alone unless you've changed version on website
 std::string url = "https://keyauth.win/api/1.2/";
 
-KeyAuth::api KeyAuthApp(name, ownerid, secret, version, url);
+//KeyAuth::api KeyAuthApp(name, ownerid, secret, version, url);
 
 
 BOOL __fastcall WINAPI Main(HMODULE hmodule) {
@@ -1710,18 +1710,18 @@ BOOL __fastcall WINAPI Main(HMODULE hmodule) {
 
 }
 std::string key;
-BOOL __fastcall WINAPI CheckLogin(HMODULE hmodule) {
-	while (KeyAuthApp.data.success && !exitBool)
-	{
-		KeyAuthApp.data.channeldata.clear();
-		KeyAuthApp.data.subscriptions.clear();
-		KeyAuthApp.data.~data_class();
-		KeyAuthApp.license(key);
-		Sleep(1000);
-	}
-	exitBool = true;
-	return 1;
-}
+//BOOL __fastcall WINAPI CheckLogin(HMODULE hmodule) {
+//	while (KeyAuthApp.data.success && !exitBool)
+//	{
+//		KeyAuthApp.data.channeldata.clear();
+//		KeyAuthApp.data.subscriptions.clear();
+//		KeyAuthApp.data.~data_class();
+//		KeyAuthApp.license(key);
+//		Sleep(1000);
+//	}
+//	exitBool = true;
+//	return 1;
+//}
 
 std::string comp_name() {
 	char buff[MAX_PATH];
@@ -1734,42 +1734,42 @@ int __fastcall main()
 {
 	SetConsoleTitle(xorstr_("BloodyHack"));
 	printf(xorstr_("[Welcome to Blood Hack]\n"));
-	KeyAuthApp.init();
-	bool exit = true;
-	for (int i = 0; i < 10; i++)
-	{
-		std::cout << xorstr_("Enter key: ");
-		std::cin >> key;
+	////KeyAuthApp.init();
+	//bool exit = true;
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	std::cout << xorstr_("Enter key: ");
+	//	std::cin >> key;
 
-		KeyAuthApp.license(key);
-		if (KeyAuthApp.data.success != true) {
-			MessageBoxA(0, "Login error, please check you key" , xorstr_("[Blood Hack]"), MB_OK || MB_ICONERROR);
-		}
-		else
-		{
-			std::cout << xorstr_("[+] Key is valid") << std::endl;
-			exit = false;
-			break;
-		}
-	}
-	if (exit)
-	{
-		std::cout << "[ - ] You entered incorrect key 10 times. Restart the program" << std::endl;
-		getchar();
-		return -1;
-	}
-	std::cout << KeyAuthApp.data.message <<std::endl;
+	//	KeyAuthApp.license(key);
+	//	if (KeyAuthApp.data.success != true) {
+	//		MessageBoxA(0, "Login error, please check you key" , xorstr_("[Blood Hack]"), MB_OK || MB_ICONERROR);
+	//	}
+	//	else
+	//	{
+	//		std::cout << xorstr_("[+] Key is valid") << std::endl;
+	//		exit = false;
+	//		break;
+	//	}
+	//}
+	//if (exit)
+	//{
+	//	std::cout << "[ - ] You entered incorrect key 10 times. Restart the program" << std::endl;
+	//	getchar();
+	//	return -1;
+	//}
+	//std::cout << KeyAuthApp.data.message <<std::endl;
 
-	for (auto var : KeyAuthApp.data.subscriptions)
-	{
-		std::cout << "Name: " << var.name << " Expire date: " << stoi(var.expiry) << std::endl;
-		//std::cout << time << std::endl;
-		std::cout << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) << std::endl;
-	}
-	KeyAuthApp.log("Key: " + key + ";PC_NAME: " + comp_name() + ";IP: " + KeyAuthApp.data.ip + ";HWID: " + KeyAuthApp.data.hwid);
+	//for (auto var : KeyAuthApp.data.subscriptions)
+	//{
+	//	std::cout << "Name: " << var.name << " Expire date: " << stoi(var.expiry) << std::endl;
+	//	//std::cout << time << std::endl;
+	//	std::cout << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) << std::endl;
+	//}
+	//KeyAuthApp.log("Key: " + key + ";PC_NAME: " + comp_name() + ";IP: " + KeyAuthApp.data.ip + ";HWID: " + KeyAuthApp.data.hwid);
 	Sleep(1000);
-	//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Main, 0, 0, 0);
-	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)CheckLogin, 0, 0, 0);
+	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Main, 0, 0, 0);
+	//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)CheckLogin, 0, 0, 0);
 	while (!exitBool)
 	{
 		Sleep(100);
