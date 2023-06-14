@@ -403,7 +403,7 @@ bool Overlay::Render()
 	TempRect.left = TempPoint.x;
 	TempRect.top = TempPoint.y;
 	ImGuiIO& io = ImGui::GetIO();
-	io.Fonts->AddFontDefault();
+	//io.Fonts->AddFontDefault();
 	//system("C:\\USERS\\ILLIA\\APPDATA\\LOCAL\\MICROSOFT\\WINDOWS\\FONTS\\INTER-REGULAR.TTF");
 	/*ImFont* mainfont = io.Fonts->AddFontFromFileTTF("C:\\USERS\\ILLIA\\APPDATA\\LOCAL\\MICROSOFT\\WINDOWS\\FONTS\\INTER-REGULAR.TTF", 18.5f);
 	if (mainfont == NULL)
